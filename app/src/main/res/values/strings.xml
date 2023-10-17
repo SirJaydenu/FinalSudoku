@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FinalSudoku</string>
+    <string name="todo">TODO</string>
+    <string name="sudoku">Sudoku</string>
+    <string name="daily_challenge">Daily Challenge</string>
+    <string name="settings">TODO</string>
+    <string name="daily">TODO</string>
+    <string name="new_game">New Game</string>
+    <string name="new_game_text">New Game</string>
+    <string name="create">Create</string>
+</resources>
