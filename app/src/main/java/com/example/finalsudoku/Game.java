@@ -1,46 +1,44 @@
 package com.example.finalsudoku;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.content.Intent;
-import android.os.Bundle;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Toast;
 
-public class Game extends AppCompatActivity{
-    View shine;
+import androidx.annotation.Nullable;
+
+public class Game extends View {
+    private final int boardColor;
+    private final Paint boardColorPaint = new Paint();
+    public Game(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.Game,
+                0, 0);
+
+        try{
+            boardColor = a.getInteger(R.styleable.SudokuBoard_boardColor, 0)
+        }finally{
+            a.recycle();
+        }
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toast.makeText(Game.this, "1st Step", Toast.LENGTH_SHORT).show();
-        shine = findViewById(R.id.shine);
-        shineAnimation();
+    protected void onMeasure (int width, int height){
+        super.onMeasure(width, height);
+
+        int dimension = Math.min(this.getWidth(), this.getHeight());
+
+        setMeasuredDimension(dimension, dimension);
     }
+    @Override
+    protected void onDraw(Canvas canvas){
+        boardColorPaint.setStyle(Paint.Style.STROKE);
+        boardColorPaint.setStrokeWidth(16);
+        boardColorPaint.setColor(boardColor);
+        boardColorPaint.setAntiAlias(true);
 
-    private void shineAnimation() {
-        Animation anim = AnimationUtils.loadAnimation(this, R.anim.left_right);
-        shine.startAnimation(anim);
-        anim.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                shine.startAnimation(anim);
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-    }
-
-    public void openSudoku(){
-        Intent intent = new Intent(this, MainMenu.class);
-        startActivity(intent);
+        canvas.drawRect(0, 0, getWidth(), getHeight(), boardColorPaint);
     }
 }

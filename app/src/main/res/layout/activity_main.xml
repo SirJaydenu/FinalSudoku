@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/MainPage">
 
     <TextView
         android:id="@+id/Sudoku"
@@ -33,6 +35,7 @@
     <!--This is the view which we will be animating
         in order to show shine effect-->
     <RelativeLayout
+        android:id="@+id/NewGame"
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:layout_marginEnd="20dp"
@@ -56,10 +59,10 @@
             >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="New Game"
+                android:text="@string/new_game1"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -121,13 +124,25 @@
         android:id="@+id/imageView"
         android:layout_width="91dp"
         android:layout_height="107dp"
+        android:contentDescription="@string/daily"
         app:layout_constraintBottom_toTopOf="@+id/DailyChallenge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.237"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.933"
-        app:srcCompat="@drawable/paomedia_small_n_flat_calendar_512"
-        android:contentDescription="@string/daily" />
+        app:srcCompat="@drawable/paomedia_small_n_flat_calendar_512" />
+
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="91dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.174" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
