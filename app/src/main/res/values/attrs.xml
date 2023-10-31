@@ -2,5 +2,9 @@
 <resources>
     <declare-styleable name="Game">
         <attr name="boardColor" format="color"/>
+        <attr name="CellFillColor" format="color"/>
+        <attr name="cellHighlightColor" format="color"/>
+        <attr name="lettorColor" format="color"/>
+        <attr name="lettorColorSolve" format="color"/>
     </declare-styleable>
 </resources>

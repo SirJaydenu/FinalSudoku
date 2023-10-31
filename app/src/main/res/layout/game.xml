@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/Game"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tool:context=".Game">
+
+    <!-- Add 9x9 Sudoku grid -->
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="?attr/homeAsUpIndicator"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+        android:contentDescription="@string/todo" />
+
+    <com.example.finalsudoku.Game
+        android:id="@+id/board"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        custom:layout_constraintBottom_toTopOf="@+id/LinearLayout"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintStart_toStartOf="parent"
+        custom:CellFillColor="#6600DDFF"
+        custom:cellHighlightColor="#2600DDFF"
+        custom:layout_constraintTop_toBottomOf="@+id/imageButton"
+        custom:boardColor="#000000">
+
+    </com.example.finalsudoku.Game>
+
+
+    <LinearLayout
+        android:id="@+id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/board">
+
+        <Button
+            android:id="@+id/button1"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BOnePress"
+            android:text="@string/_1"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button2"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BTwoPress"
+            android:text="@string/_2"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button3"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BThreePress"
+            android:text="@string/_3"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button4"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BFourPress"
+            android:text="@string/_4"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button5"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BFivePress"
+            android:text="@string/_5"
+
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button6"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BSixPress"
+            android:text="@string/_6"
+
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button7"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="BSevenPress"
+            android:text="@string/_7"
+
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button8"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BEightPress"
+            android:text="@string/_8"
+
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button9"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BNinePress"
+            android:text="@string/_9"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
