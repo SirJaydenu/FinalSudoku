@@ -35,7 +35,8 @@ android {
 }
 
 dependencies {
-    implementation ("nl.dionsegijn:konfetti-xml:2.0.3")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.21")
+    implementation ("nl.dionsegijn:konfetti:1.2.6")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

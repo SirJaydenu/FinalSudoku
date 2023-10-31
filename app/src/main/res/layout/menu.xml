@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/gradient_list"
-    android:id="@+id/MainPage">
+    android:id="@+id/Menu"
+    tools:context=".MainMenu">
 
     <TextView
         android:id="@+id/Sudoku"
@@ -21,19 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.58" />
 
-<!--    <Button-->
-<!--        android:id="@+id/Continue"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="80dp"-->
-<!--        android:text="Continue Game\n"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/MainMenu" />-->
 
-
-    <!--This is the view which we will be animating
-        in order to show shine effect-->
     <RelativeLayout
         android:id="@+id/NewGame"
         android:layout_width="200dp"
