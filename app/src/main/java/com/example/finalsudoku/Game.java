@@ -30,7 +30,7 @@ public class Game extends View {
 
     private final Paint letterPaint = new Paint();
     private final Rect letterPaintBounds = new Rect();
-    private final Solver solver = new Solver();
+        private final Solver solver = new Solver();
     private int cellSize;
     public Game (Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -177,7 +177,4 @@ public class Game extends View {
         return this.solver;
     }
 
-    public void initializeBoard() {
-
-    }
 }

@@ -22,8 +22,11 @@
     <string name="_7">7</string>
     <string name="_8">8</string>
     <string name="_9">9</string>
-    <string name="solve">Solve</string>
+    <string name="solve">\?</string>
     <string name="textview">TextView</string>
     <string name="todo5">TODO</string>
     <string name="clear" />
+    <string name="Time">Time</string>
+    <string name="Mistakes">mistakes\n</string>
+    <string name="mistakeCount">0/3</string>
 </resources>

@@ -63,6 +63,7 @@
             app:layout_constraintEnd_toStartOf="@+id/button2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/board" />
+
         <Button
             android:id="@+id/button2"
             style="?android:attr/buttonBarButtonStyle"
@@ -73,6 +74,7 @@
             android:text="@string/_2"
             android:textColor="@color/black"
             android:textSize="22sp" />
+
         <Button
             android:id="@+id/button3"
             style="?android:attr/buttonBarButtonStyle"
@@ -189,40 +191,116 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:fontFamily="@font/amaranth"
+        android:gravity="end|bottom"
+        android:text="@string/textview"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/board"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.843"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="1.0" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/solve" />
+    <TextView
+        android:id="@+id/Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/amaranth"
+        android:gravity="end|bottom"
+        android:text="@string/Time"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/board"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.819"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/amaranth"
-            android:gravity="end|bottom"
-            android:text="@string/textview"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/Mistakes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="407dp"
+        android:fontFamily="@font/amaranth"
+        android:gravity="end|bottom"
+        android:text="@string/Mistakes"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/board"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.969" />
 
-        <ImageButton
-            android:id="@+id/pause"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            custom:srcCompat="@drawable/pause"
-            android:contentDescription="@string/todo5" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/mistakeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="406dp"
+        android:fontFamily="@font/amaranth"
+        android:gravity="end|bottom"
+        android:text="@string/mistakeCount"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/board"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:onClick="reveal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/board"
+        app:layout_constraintVertical_bias="0.0"
+        custom:srcCompat="@drawable/lightbulb" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/LinearLayout2"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/board"
+        app:layout_constraintVertical_bias="0.0"
+        custom:srcCompat="@drawable/baseline_undo_24" />
+
+    <ToggleButton
+        android:id="@+id/pause"
+        android:layout_width="56dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="410dp"
+        android:checked="false"
+        android:contentDescription="@string/todo5"
+        android:drawableStart="@drawable/pause"
+        android:editable="false"
+        android:onClick="onClickStop"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintBottom_toBottomOf="@+id/board"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        custom:srcCompat="@drawable/pause" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
