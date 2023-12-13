@@ -57,9 +57,6 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
-
-        <!--This is the view which we will be animating
-            in order to show shine effect-->
         <View
             android:id="@+id/shine"
             android:layout_width="30dp"

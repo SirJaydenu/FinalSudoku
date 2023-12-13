@@ -29,4 +29,17 @@
     <string name="Time">Time</string>
     <string name="Mistakes">mistakes\n</string>
     <string name="mistakeCount">0/3</string>
+    <string name="mute_sound">Mute Sound</string>
+    <string name="how_to_play">How to Play</string>
+    <string name="mystery">Mystery</string>
+    <string name="todo4">todo4</string>
+    <string name="todo12">TODO</string>
+    <string name="todo37">TODO</string>
+    <string name="space">" "</string>
+    <string name="space2" />
+    <string name="yeah_i_know_but_where_do_i_put_it_ashvin_1_24_39_p_m">\'Yeah I know but where do I put it?\' - Ashvin 1:24:39 P.M.</string>
+    <string name="explode">Explode</string>
+    <string name="parade">Return to Menu</string>
+    <string name="rain">Rain</string>
+    <string name="congratulations">Congratulations !</string>
 </resources>

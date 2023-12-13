@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/java"
-        android:title="Java" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:radius="7dp"
+    android:left="1dp"
+    android:top="1dp"
+    android:right="1dp"
+    android:bottom="1dp"
+    >
 
     <item
-        android:id="@+id/kotlin"
-        android:title="Kotlin" />
+        android:id="@+id/mute"
+        android:checkable="true"
+        android:checked="false"
+        android:title="@string/mute_sound" />
 
     <item
-        android:id="@+id/android"
-        android:title="Android" />
-
+        android:id="@+id/tutorial"
+        android:title="@string/how_to_play" />
     <item
-        android:id="@+id/react_native"
-        android:title="React Native" />
+        android:id="@+id/Mystery"
+        android:title="@string/mystery"/>
+
+
 </menu>

@@ -1,18 +1,24 @@
 package com.example.finalsudoku;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.*;
 
 public class Solver {
     private int selected_Row;
     private int selected_Col;
+
     private static int[][]  board;
+    private static int[][]  key;
+    private static Stack<Integer> stack;
+
     ArrayList<ArrayList<Object>> emptyBoxIndex;
     Solver(){
         selected_Row = -1;
         selected_Col = -1;
+        stack = new Stack<>();
 
         board = new int[9][9];
-
+        key = new int [9][9];
         for (int i = 0; i < 9; i++) {
             Arrays.fill(board[i], 0);
 
@@ -22,6 +28,7 @@ public class Solver {
     }
     public void generateBoard(){
         solveSudoku();
+        key = board;
         removeNumbers();
     }
     private static boolean isValidMove(int row, int col, int value) {
@@ -59,12 +66,17 @@ public class Solver {
                 board[this.selected_Row-1][this.selected_Col-1] = 0;
             }
             else{
-                board[this.selected_Row-1][this.selected_Col-1] = num;
+                if(isValidMove(selected_Row, selected_Col, num)){
+                    board[this.selected_Row-1][this.selected_Col-1] = num;
+                    stack.push(this.selected_Col-1);
+                    stack.push(this.selected_Row-1);
+                }
             }
         }
     }
         private static void solveSudoku() {
             solveCell(0, 0);
+            hasUniqueSolution();
         }
         private static boolean solveCell(int row, int col) {
             if (row == 9) {
@@ -90,20 +102,11 @@ public class Solver {
 
             return false;
         }
-    private static int solveCellNum(int row, int col) {
-        for (int num = 1; num <= 9; num++) {
-            if (isValidMove(row, col, num)) {
-                return num;
-            }
-        }
-        // If no valid move is found, return 0 or handle the case as appropriate for your needs
-        return 0;
-    }
     private static void removeNumbers() {
         int cellsToRemove = 40;
-        int[][] backup = new int[9][9];
+        int[][] copy = new int[9][9];
         for (int i = 0; i < 9; i++) {
-            System.arraycopy(board[i], 0, backup[i], 0, 9);
+            System.arraycopy(board[i], 0, copy[i], 0, 9);
         }
 
         while (cellsToRemove > 0) {
@@ -112,33 +115,26 @@ public class Solver {
 
             if (board[row][col] != 0) {
                 board[row][col] = 0;
-                if (!hasUniqueSolution()) {
-                    System.arraycopy(backup, 0, board, 0, backup.length);
-                } else {
-                    cellsToRemove--;
-                }
+                cellsToRemove--;
             }
         }
     }
     static void revealHint() {
-        int emptyCellCount = countEmptyCells();
+        int hints = 99;
 
-        if (emptyCellCount > 0) {
-            int emptyIndex = (int) (Math.random() * emptyCellCount);
-            int count = 0;
+        while(hints > 1){
+            int row = (int) (Math.random() * 9);
+            int col = (int) (Math.random() * 9);
+            if(board[row][col] == 0){
+                board[row][col] = key[row][col];
 
-            outerLoop:
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
-                    if (board[i][j] == 0) {
-                        if (count == emptyIndex) {
-                            board[i][j] = solveCellNum(i, j);
-                            break outerLoop;
-                        }
-                        count++;
-                    }
-                }
+                hints--;
             }
+        }
+    }
+    public static void undoNumber(){
+        if(!stack.isEmpty()) {
+            board[stack.pop()][stack.pop()] = 0;
         }
     }
     private static int countEmptyCells() {
@@ -152,14 +148,16 @@ public class Solver {
         }
         return count;
     }
-    private static boolean hasUniqueSolution() {
+    private static void hasUniqueSolution() {
             int[][] copy = new int[9][9];
             for (int i = 0; i < 9; i++) {
                 System.arraycopy(board[i], 0, copy[i], 0, 9);
             }
-            return solveCell(0, 0) && isSudokuSolved();
+        if (!solveCell(0, 0)) {
+            isSudokuSolved();
         }
-        private static boolean isSudokuSolved() {
+    }
+        public static boolean isSudokuSolved() {
             for (int[] row : board) {
                 for (int cell : row) {
                     if (cell == 0) {
