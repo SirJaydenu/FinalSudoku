@@ -286,7 +286,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:contentDescription="@string/todo37"
-        android:onClick="undo"
+        android:onClick="finished"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/LinearLayout2"
         app:layout_constraintHorizontal_bias="0.58"

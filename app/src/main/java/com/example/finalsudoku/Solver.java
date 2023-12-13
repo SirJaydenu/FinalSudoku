@@ -28,7 +28,6 @@ public class Solver {
     }
     public void generateBoard(){
         solveSudoku();
-        key = board;
         removeNumbers();
     }
     private static boolean isValidMove(int row, int col, int value) {
@@ -104,9 +103,8 @@ public class Solver {
         }
     private static void removeNumbers() {
         int cellsToRemove = 40;
-        int[][] copy = new int[9][9];
         for (int i = 0; i < 9; i++) {
-            System.arraycopy(board[i], 0, copy[i], 0, 9);
+            System.arraycopy(board[i], 0, key[i], 0, 9);
         }
 
         while (cellsToRemove > 0) {
@@ -120,33 +118,18 @@ public class Solver {
         }
     }
     static void revealHint() {
-        int hints = 99;
-
-        while(hints > 1){
-            int row = (int) (Math.random() * 9);
-            int col = (int) (Math.random() * 9);
-            if(board[row][col] == 0){
-                board[row][col] = key[row][col];
-
-                hints--;
-            }
+        int row = (int) (Math.random() * 9);
+        int col = (int) (Math.random() * 9);
+        while(board[row][col] != 0){
+            row = (int) (Math.random() * 9);
+            col = (int) (Math.random() * 9);
         }
+        board[row][col] = key[row][col];
     }
     public static void undoNumber(){
         if(!stack.isEmpty()) {
             board[stack.pop()][stack.pop()] = 0;
         }
-    }
-    private static int countEmptyCells() {
-        int count = 0;
-        for (int[] row : board) {
-            for (int cell : row) {
-                if (cell == 0) {
-                    count++;
-                }
-            }
-        }
-        return count;
     }
     private static void hasUniqueSolution() {
             int[][] copy = new int[9][9];

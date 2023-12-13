@@ -13,6 +13,7 @@ import static nl.dionsegijn.konfetti.core.Position.Relative;
 
 import android.graphics.drawable.Drawable;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
@@ -77,6 +78,7 @@ public class Congratulations extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         rain();
+//        findViewById(R.id.finalTime).
 
     }
     public void explode() {
