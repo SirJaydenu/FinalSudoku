@@ -9,13 +9,11 @@ public class Solver {
 
     private static int[][]  board;
     private static int[][]  key;
-    private static Stack<Integer> stack;
 
     ArrayList<ArrayList<Object>> emptyBoxIndex;
     Solver(){
         selected_Row = -1;
         selected_Col = -1;
-        stack = new Stack<>();
 
         board = new int[9][9];
         key = new int [9][9];
@@ -65,10 +63,8 @@ public class Solver {
                 board[this.selected_Row-1][this.selected_Col-1] = 0;
             }
             else{
-                if(isValidMove(selected_Row, selected_Col, num)){
+                if(isValidMove(selected_Row - 1, selected_Col - 1, num)){
                     board[this.selected_Row-1][this.selected_Col-1] = num;
-                    stack.push(this.selected_Col-1);
-                    stack.push(this.selected_Row-1);
                 }
             }
         }
@@ -127,9 +123,6 @@ public class Solver {
         board[row][col] = key[row][col];
     }
     public static void undoNumber(){
-        if(!stack.isEmpty()) {
-            board[stack.pop()][stack.pop()] = 0;
-        }
     }
     private static void hasUniqueSolution() {
             int[][] copy = new int[9][9];
@@ -150,7 +143,7 @@ public class Solver {
             }
             return true;
         }
-    public int[][] getBoard(){
+    public static int[][] getBoard(){
         return board;
     }
     public ArrayList<ArrayList<Object>> getEmptyBoxIndex(){
@@ -159,6 +152,7 @@ public class Solver {
     public int getSelected_Col() {
         return selected_Col;
     }
+    public static int[][] getKey(){return key;}
 
     public int getSelected_Row() {
         return selected_Row;

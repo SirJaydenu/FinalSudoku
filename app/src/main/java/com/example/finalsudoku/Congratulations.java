@@ -6,16 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import static nl.dionsegijn.konfetti.core.Position.Relative;
 
 import android.graphics.drawable.Drawable;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import java.util.Arrays;
@@ -33,31 +29,16 @@ import nl.dionsegijn.konfetti.xml.KonfettiView;
 public class Congratulations extends AppCompatActivity {
     MediaPlayer music;
     View shine;
-    ConstraintLayout constraintLayout;
     private KonfettiView konfettiView = null;
     private Shape.DrawableShape drawableShape = null;
+    int[][] board;
+    RelativeLayout relativeLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.congratulations);
-
-        music = MediaPlayer.create(Congratulations.this, R.raw.yay);
-        music.start();
-
-        shine = findViewById(R.id.shine);
-        shineAnimation();
-        findViewById(R.id.works).setOnClickListener(view -> explode());
-
-        constraintLayout = findViewById(R.id.congratulations);
-        final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_heart);
-        assert drawable != null;
-        drawableShape = new Shape.DrawableShape(drawable, true, true);
-
-        konfettiView = findViewById(R.id.confetti);
-        findViewById(R.id.returnmenu).setOnClickListener(view -> openMenu());
-        sendViewToBack(konfettiView);
         EmitterConfig emitterConfig = new Emitter(5L, TimeUnit.SECONDS).perSecond(50);
         Party party = new PartyFactory(emitterConfig)
                 .angle(270)
@@ -68,8 +49,27 @@ public class Congratulations extends AppCompatActivity {
                 .sizes(new Size(12, 5f, 0.2f))
                 .position(0.0, 0.0, 1.0, 0.0)
                 .build();
+        findViewById(R.id.relativeLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                music.reset();
+                konfettiView.start(party);
+            }
+        });
+        music = MediaPlayer.create(Congratulations.this, R.raw.yay);
+        music.start();
+        board = Solver.getKey();
+        shine = findViewById(R.id.shine);
+        shineAnimation();
+        findViewById(R.id.works).setOnClickListener(view -> explode());
+        final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_heart);
+        assert drawable != null;
+        drawableShape = new Shape.DrawableShape(drawable, true, true);
 
-        konfettiView.setOnClickListener(view -> konfettiView.start(party));
+        konfettiView = findViewById(R.id.konfettiView);
+        findViewById(R.id.returnmenu).setOnClickListener(view -> openMenu());
+        sendViewToBack(konfettiView);
+
         findViewById(R.id.yay).setOnClickListener(v -> openMenu());
         rain();
         try {
@@ -78,8 +78,6 @@ public class Congratulations extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         rain();
-//        findViewById(R.id.finalTime).
-
     }
     public void explode() {
         EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100);

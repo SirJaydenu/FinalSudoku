@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         runTimer();
         mute = MainMenu.mute;
         if (!this.mute) music.start();
-
+        if(Solver.isSudokuSolved()) finished();
     }
     public void reveal(View view){
         Solver.revealHint();
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         running = true;
-        Intent intent = getIntent();
+
 
     }
     public void onClickStop(View view)
@@ -122,12 +122,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void BOnePress(View view){
+    public void BOnePress(View view) {
         gameBoardSolver.setNumberPos(1);
         gameBoard.invalidate();
-    }
-    public void undo(View view){
-        Solver.undoNumber();
     }
     public void BTwoPress(View view){
         gameBoardSolver.setNumberPos(2);
@@ -162,10 +159,15 @@ public class MainActivity extends AppCompatActivity {
         gameBoard.invalidate();
     }
     public void finished(View view){
+        running = false;
         Intent intent = new Intent(this, Congratulations.class);
         startActivity(intent);
 
     }
+    public void finished(){
+        running = false;
+        Intent intent = new Intent(this, Congratulations.class);
+        startActivity(intent);
 
-
+    }
 }
